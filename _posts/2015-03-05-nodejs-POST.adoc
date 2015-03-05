@@ -1,0 +1,64 @@
+# node.js で POSTデータを扱う方法
+
+:hp-tags: node.js, javascript
+
+## node.js で GET/POST パラメータを取得する
+
+```
+var sys = require ('sys'),
+url = require('url'),
+http = require('http'),
+qs = require('querystring');
+ 
+http.createServer(function (req, res) {
+   
+    if(req.method=='POST') {
+           var body='';
+           req.on('data', function (data) {
+               body +=data;
+           });
+           req.on('end',function(){
+               
+               var POST =  qs.parse(body);
+               console.log(POST);
+           });
+   }
+   else if(req.method=='GET') {
+       var url_parts = url.parse(req.url,true);
+       console.log(url_parts.query);
+   }
+   
+ 
+}).listen(1337, "127.0.0.1");
+```
+
+
+## POSTされた画像(multipart/form-dataで送信されたデータ)を取得する
+formidableモジュールを使って行う(要npmインストール)
+
+```
+ function upload(res, req){
+    console.log("Request handler 'show' was called.");
+    var form = new formidable.IncomingForm();
+    console.log("about parse");
+    form.parse(req, function(error, fields, files){
+        console.log("parsing done");
+        fs.rename(files.upload.path, "img/test.jpg", function(err){
+            if(err){
+                fs.unlink("img/test.jpg");
+                fs.rename(files.upload.path, "img/test.jpg");
+            }
+        });
+       res.writeHead(200, {"Content-Type":"text/html; charset=UTF-8"});
+       res.write("送信された画像ですよー↓<br/>");
+       res.write("<img src='/show' />");
+       res.end();
+    });
+ }
+```
+
+
+## 参考資料
+- [クライアントからのデータ取得｜node.js](http://of.studio23c.com/index.php/archives/598)
+- [node.jsで画像アップロードアプリをつくってみた](http://dangerous-animal141.hatenablog.com/entry/2013/03/23/145119)
+- [node.js GET POSTパラメーターを取得する](http://onlineconsultant.jp/pukiwiki/?node.js%20GET%20POST%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%BC%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B)
