@@ -34,10 +34,13 @@ http.createServer(function (req, res) {
 
 
 ## POSTされた画像(multipart/form-dataで送信されたデータ)を取得する
-formidableモジュールを使って行う(要npmインストール)
+formidableモジュールを使って行う(要npmインストール ``npm install formidable`` )
+
 
 ```
- function upload(res, req){
+var formidable = require('formidable');
+
+function upload(res, req){
     console.log("Request handler 'show' was called.");
     var form = new formidable.IncomingForm();
     console.log("about parse");
