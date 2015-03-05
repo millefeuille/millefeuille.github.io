@@ -41,3 +41,7 @@ console.log( 'Hello World'.grey);
 //コンソール緑色にする：
 console.log( 'Hello World'.green);
 ```
+
+
+## 参考資料
+- [Smashing Node.js に書いてあるEffective Node.jsなこと(第二弾)](http://yosuke-furukawa.hatenablog.com/entry/2012/11/09/021719)
