@@ -17,3 +17,6 @@
 var buffer = new Buffer(string, 'base64');
 fs.writeFile(filename, buffer, callback);
 ```
+
+## 参考資料
+- [Node.jsで画像ファイルをBase64エンコードする方法](http://memo.yomukaku.net/entries/vmbqnNy)
