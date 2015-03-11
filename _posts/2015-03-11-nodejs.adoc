@@ -1,0 +1,33 @@
+# node.js で 多段コールバックをスッキリさせる方法
+
+:hp-tags: node.js, javascript
+
+## async.jsモジュールを使う
+
+npm の async モジュールをインストールする
+
+``npm install colors``
+
+
+```Example
+async.waterfall([
+    function(callback) {
+        callback(null, 'one', 'two');
+    },
+    function(arg1, arg2, callback) {
+      // arg1 now equals 'one' and arg2 now equals 'two'
+        callback(null, 'three');
+    },
+    function(arg1, callback) {
+        // arg1 now equals 'three'
+        callback(null, 'done');
+    }
+], function (err, result) {
+    // result now equals 'done'    
+});
+```
+
+
+## 参考資料
+- [Node.jsのコールバック地獄をPromiseやGeneratorを使って解消する](http://postd.cc/node-js-callback-hell-promises-generators/)
+- [Async.js](https://github.com/caolan/async#waterfall)
