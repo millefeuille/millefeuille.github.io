@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>node.js で 多段コールバックをスッキリさせる方法</title>
+    <meta name="description" content="" />
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://millefeuille.github.io/themes/Saga/assets/css/style.css?v=1.0.0" rel="stylesheet" type="text/css">
+    <link href="https://millefeuille.github.io/themes/Saga/assets/css/animate.min.css?v=1.0.0" rel="stylesheet" type="text/css">
+    <link href="https://millefeuille.github.io/themes/Saga/favicon.ico" rel="shortcut icon">
+    <link rel="canonical" href="https://millefeuille.github.io/2015/03/11/nodejs.html" />
+    
+    <meta property="og:site_name" content="mille&#x27;s memo" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="node.js で 多段コールバックをスッキリさせる方法" />
+    <meta property="og:description" content="async.jsモジュールを使う npm の async モジュールをインストールする npm install colors async.waterfall([     function(callback) {         callback(null, &#x27;one&#x27;, &#x27;two&#x27;);     },     function(arg1, arg2, callback) {       // arg1 now equals &#x27;one&#x27; and arg2 now equals &#x27;two&#x27;         callback(null, &#x27;three&#x27;);     },     function(arg1, callback) {         // arg1 now equals &#x27;three&#x27;..." />
+    <meta property="og:url" content="https://millefeuille.github.io/2015/03/11/nodejs.html" />
+    <meta property="article:published_time" content="2015-03-10T15:00:00.000Z" />
+    <meta property="article:modified_time" content="2015-03-11T08:14:34.354Z" />
+    <meta property="article:tag" content="node.js" />
+    <meta property="article:tag" content="javascript" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="node.js で 多段コールバックをスッキリさせる方法" />
+    <meta name="twitter:description" content="async.jsモジュールを使う npm の async モジュールをインストールする npm install colors async.waterfall([     function(callback) {         callback(null, &#x27;one&#x27;, &#x27;two&#x27;);     },     function(arg1, arg2, callback) {       // arg1 now equals &#x27;one&#x27; and arg2 now equals &#x27;two&#x27;         callback(null, &#x27;three&#x27;);     },     function(arg1, callback) {         // arg1 now equals &#x27;three&#x27;..." />
+    <meta name="twitter:url" content="https://millefeuille.github.io/2015/03/11/nodejs.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "mille&#x27;s memo",
+    "author": {
+        "@type": "Person",
+        "name": "mille",
+        "image": "https://avatars.githubusercontent.com/u/4104845?v=3",
+        "url": "undefined/author/undefined",
+        "sameAs": null
+    },
+    "headline": "node.js で 多段コールバックをスッキリさせる方法",
+    "url": "https://millefeuille.github.io/2015/03/11/nodejs.html",
+    "datePublished": "2015-03-10T15:00:00.000Z",
+    "dateModified": "2015-03-11T08:14:34.354Z",
+    "keywords": "node.js,  javascript",
+    "description": "async.jsモジュールを使う npm の async モジュールをインストールする npm install colors async.waterfall([     function(callback) {         callback(null, &#x27;one&#x27;, &#x27;two&#x27;);     },     function(arg1, arg2, callback) {       // arg1 now equals &#x27;one&#x27; and arg2 now equals &#x27;two&#x27;         callback(null, &#x27;three&#x27;);     },     function(arg1, callback) {         // arg1 now equals &#x27;three&#x27;..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost ?" />
+    <link rel="alternate" type="application/rss+xml" title="mille&#x27;s memo" href="https://millefeuille.github.io/rss" />
+</head>
+<body class="post-template tag-undefined tag-undefined">
+    <header id="header" class="animated fadeIn">
+    <div class="header-background">
+    <section class="blog-content">
+        <a id="site-url" class="blog-title" href="https://millefeuille.github.io">mille&#x27;s memo</a>
+        <span class="blog-description"></span>
+        <nav class="links fadeIn animated">
+            <ul>
+                <!-- <li class="rss"><a title="RSS Feed" href="/rss/"><i class="fa fa-fw fa-rss-square"></i></a></li> -->
+        
+            </ul>
+        </nav>
+    </section>
+    <section class="header-content">
+        <h1 class="post-title animated fadeInUp">node.js で 多段コールバックをスッキリさせる方法</h1>
+        <span class="post-data"><span class="date animated fadeInUp"><i class="fa fa-clock-o"></i> <time class="timesince date" data-timesince="1425999600" datetime="2015-03-11T00:00" title="11 March 2015">17 hours ago</time></span>
+            <span class="tags animated fadeInUp"><i class="fa fa-tags"></i> <a href="https://millefeuille.github.io/tag/node.js">node.js</a>, <a href="https://millefeuille.github.io/tag/ javascript"> javascript</a></span>
+            <span class="author animated fadeInUp"><i class="fa fa-user"></i> <a href="">mille</a></span></span>
+    </section>
+    </div>
+</header>
+<main id="main" class="content">
+    <article itemtype="http://schema.org/BlogPosting" class="animated fadeIn content post post tag-undefined tag-undefined">
+        <section class="post-content">
+            <div class="sect1">
+<h2 id="_async_js">async.jsモジュールを使う</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>npm の async モジュールをインストールする</p>
+</div>
+<div class="paragraph">
+<p><code>npm install colors</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Example" data-lang="Example">async.waterfall([
+    function(callback) {
+        callback(null, 'one', 'two');
+    },
+    function(arg1, arg2, callback) {
+      // arg1 now equals 'one' and arg2 now equals 'two'
+        callback(null, 'three');
+    },
+    function(arg1, callback) {
+        // arg1 now equals 'three'
+        callback(null, 'done');
+    }
+], function (err, result) {
+    // result now equals 'done'
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__">参考資料</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>[Node.jsのコールバック地獄をPromiseやGeneratorを使って解消する](<a href="http://postd.cc/node-js-callback-hell-promises-generators/" class="bare">http://postd.cc/node-js-callback-hell-promises-generators/</a>)</p>
+</li>
+<li>
+<p>[Async.js](<a href="https://github.com/caolan/async#waterfall" class="bare">https://github.com/caolan/async#waterfall</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+        </section>
+
+    </article>
+
+</main>
+    <footer class="animated fadeIn" id="footer">
+        <section class="colophon">
+          <section class="copyright">Copyright &copy; <span itemprop="copyrightHolder">mille&#x27;s memo</span>. <span rel="license">All Rights Reserved</span>.</section>
+          <section class="poweredby">Published with <a class="icon-ghost" href="http://hubpress.io">HubPress</a></section>
+        </section>
+        <section class="bottom">
+          <section class="attribution">
+            <a href="http://github.com/Reedyn/Saga">Built with <i class="fa fa-heart"></i> and Free and Open-Source Software</a>.
+          </section>
+        </section>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script>
+    <script src="https://millefeuille.github.io/themes/Saga/assets/js/scripts.js?v=1.0.0"></script>
+    
+</body>
+</html>
