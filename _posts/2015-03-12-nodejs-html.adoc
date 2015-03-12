@@ -1,0 +1,7 @@
+# node.js で html パースする方法
+
+:hp-tags: node.js, javascript
+
+
+## 参考資料
+- [Node.js用のスクレイピングモジュール「cheerio-httpcli」の紹介](http://qiita.com/ktty1220/items/e9e42247ede476d04ce2)
