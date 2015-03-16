@@ -1,0 +1,19 @@
+# JavaScript で undeifed 判定
+
+:hp-tags: javascript
+
+## undefined を自分で定義する
+jQueryはこの手法を取っており、ソース圧縮率にも有効という副作用がある。
+
+```
+var UNDEFINED;
+
+if( hoge === UNDEFINED )
+{
+	console.log("hogeは未定義");
+}
+```
+
+
+## 参考資料
+- [JavaScript：undefined値の判定 - 泥のように](http://blog.tojiru.net/article/205007468.html)
