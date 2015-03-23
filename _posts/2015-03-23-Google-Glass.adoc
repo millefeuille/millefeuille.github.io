@@ -1,0 +1,7 @@
+# Google Glass でカメラを使う
+
+:hp-tags: google glass, android, java
+
+
+## 参考資料
+- [Google Glassでカメラを使う](http://blog.techfirm.co.jp/2014/07/31/google-glass%E3%81%A7%E3%82%AB%E3%83%A1%E3%83%A9%E3%82%92%E4%BD%BF%E3%81%86/)
