@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Android アプリで画像ファイルを読み込む</title>
+    <meta name="description" content="" />
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://millefeuille.github.io/themes/Saga/assets/css/style.css?v=1.0.0" rel="stylesheet" type="text/css">
+    <link href="https://millefeuille.github.io/themes/Saga/assets/css/animate.min.css?v=1.0.0" rel="stylesheet" type="text/css">
+    <link href="https://millefeuille.github.io/themes/Saga/favicon.ico" rel="shortcut icon">
+    <link rel="canonical" href="https://millefeuille.github.io/2015/03/23/Android.html" />
+    
+    <meta property="og:site_name" content="mille&#x27;s memo" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Android アプリで画像ファイルを読み込む" />
+    <meta property="og:description" content="画像の読み込み File dir = new File(Environment.getExternalStorageDirectory().getPath()+&quot;/dir/&quot;); if( dir.exists() ) {     File file = new File( dir.getAbsolutePath()+&quot;/test.jpg&quot; );     if( file.exists() )     {             Bitmap _bm = BitmapFactory.decodeFile(file.getPath());             ((ImageView)findViewById(R.id.imageView1)).setImageBitmap(_bm);     }     else     {         //存在しない     } } 参考資料 [SDカード内の画像を読み込む]..." />
+    <meta property="og:url" content="https://millefeuille.github.io/2015/03/23/Android.html" />
+    <meta property="article:published_time" content="2015-03-22T15:00:00.000Z" />
+    <meta property="article:modified_time" content="2015-03-23T08:01:27.585Z" />
+    <meta property="article:tag" content="android" />
+    <meta property="article:tag" content="java" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Android アプリで画像ファイルを読み込む" />
+    <meta name="twitter:description" content="画像の読み込み File dir = new File(Environment.getExternalStorageDirectory().getPath()+&quot;/dir/&quot;); if( dir.exists() ) {     File file = new File( dir.getAbsolutePath()+&quot;/test.jpg&quot; );     if( file.exists() )     {             Bitmap _bm = BitmapFactory.decodeFile(file.getPath());             ((ImageView)findViewById(R.id.imageView1)).setImageBitmap(_bm);     }     else     {         //存在しない     } } 参考資料 [SDカード内の画像を読み込む]..." />
+    <meta name="twitter:url" content="https://millefeuille.github.io/2015/03/23/Android.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "mille&#x27;s memo",
+    "author": {
+        "@type": "Person",
+        "name": "mille",
+        "image": "https://avatars.githubusercontent.com/u/4104845?v=3",
+        "url": "undefined/author/undefined",
+        "sameAs": null
+    },
+    "headline": "Android アプリで画像ファイルを読み込む",
+    "url": "https://millefeuille.github.io/2015/03/23/Android.html",
+    "datePublished": "2015-03-22T15:00:00.000Z",
+    "dateModified": "2015-03-23T08:01:27.585Z",
+    "keywords": "android,  java",
+    "description": "画像の読み込み File dir = new File(Environment.getExternalStorageDirectory().getPath()+&quot;/dir/&quot;); if( dir.exists() ) {     File file = new File( dir.getAbsolutePath()+&quot;/test.jpg&quot; );     if( file.exists() )     {             Bitmap _bm = BitmapFactory.decodeFile(file.getPath());             ((ImageView)findViewById(R.id.imageView1)).setImageBitmap(_bm);     }     else     {         //存在しない     } } 参考資料 [SDカード内の画像を読み込む]..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost ?" />
+    <link rel="alternate" type="application/rss+xml" title="mille&#x27;s memo" href="https://millefeuille.github.io/rss" />
+</head>
+<body class="post-template tag-undefined tag-undefined">
+    <header id="header" class="animated fadeIn">
+    <div class="header-background">
+    <section class="blog-content">
+        <a id="site-url" class="blog-title" href="https://millefeuille.github.io">mille&#x27;s memo</a>
+        <span class="blog-description"></span>
+        <nav class="links fadeIn animated">
+            <ul>
+                <!-- <li class="rss"><a title="RSS Feed" href="/rss/"><i class="fa fa-fw fa-rss-square"></i></a></li> -->
+        
+            </ul>
+        </nav>
+    </section>
+    <section class="header-content">
+        <h1 class="post-title animated fadeInUp">Android アプリで画像ファイルを読み込む</h1>
+        <span class="post-data"><span class="date animated fadeInUp"><i class="fa fa-clock-o"></i> <time class="timesince date" data-timesince="1427036400" datetime="2015-03-23T00:00" title="23 March 2015">17 hours ago</time></span>
+            <span class="tags animated fadeInUp"><i class="fa fa-tags"></i> <a href="https://millefeuille.github.io/tag/android">android</a>, <a href="https://millefeuille.github.io/tag/ java"> java</a></span>
+            <span class="author animated fadeInUp"><i class="fa fa-user"></i> <a href="">mille</a></span></span>
+    </section>
+    </div>
+</header>
+<main id="main" class="content">
+    <article itemtype="http://schema.org/BlogPosting" class="animated fadeIn content post post tag-undefined tag-undefined">
+        <section class="post-content">
+            <div class="sect1">
+<h2 id="__">画像の読み込み</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>File dir = new File(Environment.getExternalStorageDirectory().getPath()+"/dir/");
+
+if( dir.exists() )
+{
+    File file = new File( dir.getAbsolutePath()+"/test.jpg" );
+
+    if( file.exists() )
+    {
+            Bitmap _bm = BitmapFactory.decodeFile(file.getPath());
+            ((ImageView)findViewById(R.id.imageView1)).setImageBitmap(_bm);
+    }
+    else
+    {
+        //存在しない
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">参考資料</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>[SDカード内の画像を読み込む](<a href="http://dorodoro.info/tip/sd%E3%82%AB%E3%83%BC%E3%83%89%E5%86%85%E3%81%AE%E7%94%BB%E5%83%8F%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80/" class="bare">http://dorodoro.info/tip/sd%E3%82%AB%E3%83%BC%E3%83%89%E5%86%85%E3%81%AE%E7%94%BB%E5%83%8F%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80/</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+        </section>
+
+    </article>
+
+</main>
+    <footer class="animated fadeIn" id="footer">
+        <section class="colophon">
+          <section class="copyright">Copyright &copy; <span itemprop="copyrightHolder">mille&#x27;s memo</span>. <span rel="license">All Rights Reserved</span>.</section>
+          <section class="poweredby">Published with <a class="icon-ghost" href="http://hubpress.io">HubPress</a></section>
+        </section>
+        <section class="bottom">
+          <section class="attribution">
+            <a href="http://github.com/Reedyn/Saga">Built with <i class="fa fa-heart"></i> and Free and Open-Source Software</a>.
+          </section>
+        </section>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script>
+    <script src="https://millefeuille.github.io/themes/Saga/assets/js/scripts.js?v=1.0.0"></script>
+    
+</body>
+</html>
