@@ -1,0 +1,28 @@
+# Android アプリで画像ファイルを読み込む
+
+:hp-tags: android, java
+
+## 画像の読み込み
+
+```
+File dir = new File(Environment.getExternalStorageDirectory().getPath()+"/dir/");
+
+if( dir.exists() )
+{
+    File file = new File( dir.getAbsolutePath()+"/test.jpg" );
+    
+    if( file.exists() )
+    {
+            Bitmap _bm = BitmapFactory.decodeFile(file.getPath());
+            ((ImageView)findViewById(R.id.imageView1)).setImageBitmap(_bm); 
+    }
+    else
+    {
+        //存在しない
+    }
+}
+```
+
+
+## 参考資料
+- [SDカード内の画像を読み込む](http://dorodoro.info/tip/sd%E3%82%AB%E3%83%BC%E3%83%89%E5%86%85%E3%81%AE%E7%94%BB%E5%83%8F%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80/)
