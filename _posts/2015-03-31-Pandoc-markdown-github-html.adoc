@@ -1,0 +1,5 @@
+# Pandoc: markdown を github 風 html に変換する
+:hp-tags: pandoc, markdown
+
+## 参考資料
+[[Mac OS X] Pandoc: markdown を github 風 html に変換する]:(http://www.d-wood.com/blog/2014/09/05_6781.html)
